@@ -1,0 +1,28 @@
+#!/bin/sh
+repo="fredblgr"
+image="docker-3asem-x11"
+tag="2021"
+if [[ `uname -m` == "x86_64" ]]
+then
+  arch=amd64
+else
+  arch=`uname -m`
+fi
+
+args="`basename $0` $*"
+
+if [[ `uname` == "Darwin" ]]
+then
+  open -a XQuartz
+fi
+xhost +localhost
+
+docker run --rm --tty \
+           --volume "$(PWD):/workspace:rw" \
+           --name "$image$tag" \
+           --workdir /workspace \
+           --env="USERNAME=`id -n -u`" \
+           --env="USERID=`id -u`" \
+           --env="DISPLAY=host.docker.internal:0" \
+           $repo/$image:$tag \
+       ${args}

@@ -24,4 +24,5 @@ then
   exec /bin/bash
 fi
 useradd --create-home --skel /root --shell /bin/bash --user-group --password ubuntu --non-unique --uid $USERID $USERNAME
+export NO_AT_BRIDGE=1
 exec su $USERNAME

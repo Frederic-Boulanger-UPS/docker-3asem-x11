@@ -87,10 +87,10 @@ clobber:
 
 run:
 	docker run --rm --tty --interactive \
-		--env="USERNAME=`id -n -u`" --env="USERID=`id -u`" \
+		--env USERNAME="`id -n -u`" --env USERID="`id -u`" \
 		--volume ${PWD}:/workspace:rw \
 		--workdir /workspace \
-		--env="DISPLAY=host.docker.internal:0" \
+		--env DISPLAY="host.docker.internal:0" \
 		--name $(NAMEX) \
 		$(ARCHIMAGEX)
 
@@ -98,6 +98,6 @@ runasroot:
 	docker run --rm --tty --interactive \
 		--volume ${PWD}:/workspace:rw \
 		--workdir /workspace \
-		--env="DISPLAY=host.docker.internal:0" \
+		--env DISPLAY="host.docker.internal:0" \
 		--name $(NAMEX) \
 		$(ARCHIMAGEX)

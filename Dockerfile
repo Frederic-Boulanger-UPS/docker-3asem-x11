@@ -93,7 +93,7 @@ RUN apt autoremove && apt autoclean
 COPY resources/why3.tar /
 RUN wget https://gforge.inria.fr/frs/download.php/file/38291/why3-1.3.1.tar.gz
 RUN tar zxf why3-1.3.1.tar.gz
-RUN cd why3-1.3.1 && tar xvf /why3.tar && rm /why3.tar
+RUN cd why3-1.3.1 && tar xvf /why3.tar ; rm /why3.tar
 RUN cd why3-1.3.1 && ./configure && make \
     && echo "/usr/local/lib/why3/isabelle" >> /usr/local/${ISAINSTDIR}/etc/components
 RUN cd why3-1.3.1/lib/isabelle; cp ROOT.2021 ROOT 
@@ -135,6 +135,8 @@ COPY resources/dot_eclipse /root/.eclipse
 
 # RUN useradd --create-home --skel /root --shell /bin/bash --user-group ubuntu \
 #     && echo "ubuntu:ubuntu" | chpasswd
+
+RUN apt-get install dbus-x11
 
 RUN rm -rf /tmp/*
 

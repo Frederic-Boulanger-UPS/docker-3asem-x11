@@ -29,7 +29,7 @@ else
 fi
 
 docker run --rm --tty --interactive \
-  --volume ${PWD}:/workspace:rw \
+  --volume "${PWD}":/workspace:rw \
   --env USERNAME=${USER_NAME} --env USERID=${USER_ID} \
   --env DISPLAY="host.docker.internal:0" \
   --workdir /workspace \

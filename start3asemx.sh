@@ -18,7 +18,7 @@ fi
 
 if [ "`uname`" = "Darwin" ]
 then
-  open -a XQuartz
+  open -g -a XQuartz
 fi
 
 if [ -z "$SUDO_UID" ]

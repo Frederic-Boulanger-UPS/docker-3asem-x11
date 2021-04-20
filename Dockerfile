@@ -161,11 +161,18 @@ RUN tar zxf frama-c-22.0.tar.gz && rm frama-c-22.0.tar.gz ; \
     cd frama-c-22.0; autoconf; ./configure; make; make install ; \
 		cd ..; rm -rf frama-c-22.0
 
+# Install Metacsl
 RUN wget https://git.frama-c.com/pub/meta/-/archive/0.1/frama-c-metacsl-0.1.tar.gz \
 	&& tar zxf frama-c-metacsl-0.1.tar.gz && rm frama-c-metacsl-0.1.tar.gz \
 	&& cd `ls -d meta-0.1-*` \
 	&& autoconf && ./configure && make && make install ; \
 	cd ..; rm -rf meta-0.1-*
+
+# Install Soufflé https://souffle-lang.github.io/index.html
+RUN echo "deb https://dl.bintray.com/souffle-lang/deb-unstable focal main" | tee -a /etc/apt/sources.list
+RUN apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 379CE192D401AB61
+RUN apt-get update
+RUN apt-get install -y souffle
 
 RUN apt autoremove && apt autoclean
 

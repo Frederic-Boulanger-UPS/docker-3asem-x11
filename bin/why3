@@ -9,7 +9,7 @@ for a in $*
 do
   case $a in
     ide) args="$args ide"
-         if [[ `uname` == "Darwin" ]]
+         if [ "`uname`" = "Darwin" ]
          then
            open -a XQuartz
          fi

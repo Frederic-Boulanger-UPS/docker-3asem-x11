@@ -2,7 +2,7 @@
 repo="fredblgr"
 image="docker-3asem-x11"
 tag="2021"
-if [[ `uname -m` == "x86_64" ]]
+if [ "`uname -m`" = "x86_64" ]
 then
   arch=amd64
 else
@@ -11,7 +11,7 @@ fi
 
 args="`basename $0` $*"
 
-if [[ `uname` == "Darwin" ]]
+if [ "`uname`" = "Darwin" ]
 then
   open -a XQuartz
 fi
